@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: F:\Work\iifa\kompose-windows-amd64.exe convert
+    kompose.version: 1.24.0 (7c629530)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: capital-resources
+  name: capital-resources
+spec:
+  containers:
+    - env:
+        - name: CONNECTIONSTRINGS__DATABASE
+          value: Host=capital-resources-db;Database=capital-resources;Username=admin;Password=6jcl2#gbnkj14367dwe&5
+        - name: CONNECTIONSTRINGS__RABBITMQ
+          value: host=rabbitmq:5672;username=rabbit;password=cg@i7!dci99087fvtt
+        - name: CONNECTIONSTRINGS__REDIS
+          value: redis:6379
+        - name: KEYCLOAK__ADDRESS
+          value: http://auth/auth/realms/master
+      image: docker.nntc.pro/capital-resources:dev
+      name: capital-resources
+      ports:
+        - containerPort: 80
+      resources: {}
+  restartPolicy: OnFailure
+status: {}

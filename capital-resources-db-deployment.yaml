@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: capital-resources-db
+  name: capital-resources-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: capital-resources-db
+  template:
+    metadata:
+      labels:
+        service: capital-resources-db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: capital-resources
+            - name: POSTGRES_PASSWORD
+              value: 6jcl2#gbnkj14367dwe&5
+            - name: POSTGRES_USER
+              value: admin
+          image: postgis/postgis:12-3.0
+          name: capital-resources-db
+          ports:
+            - containerPort: 5432
+          resources:
+            limits:
+              cpu: 1
+              memory: 1024M

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: F:\Work\iifa\kompose-windows-amd64.exe convert
+    kompose.version: 1.24.0 (7c629530)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rabbitmq
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rabbitmq
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: F:\Work\iifa\kompose-windows-amd64.exe convert
+        kompose.version: 1.24.0 (7c629530)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: rabbitmq
+    spec:
+      containers:
+        - env:
+            - name: RABBITMQ_DEFAULT_PASS
+              value: cg@i7!dci99087fvtt
+            - name: RABBITMQ_DEFAULT_USER
+              value: rabbit
+          image: rabbitmq:3.8-management
+          name: rabbitmq
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+          resources: {}
+      restartPolicy: Always
+status: {}
