@@ -30,7 +30,6 @@ services:
     image: docker.nntc.pro/capital-resources:dev
     ports:
       - 80
-    restart: on-failure
     depends_on:
       - capital-resources-db
       - redis

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: capital-resources
+  name: capital-resources
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: capital-resources
+  template:
+    metadata:
+      labels:
+        service: capital-resources
+    spec:
+      containers:
+        - env:
+            - name: CONNECTIONSTRINGS__DATABASE
+              value: Host=capital-resources-db;Database=capital-resources;Username=admin;Password=6jcl2#gbnkj14367dwe&5
+            - name: CONNECTIONSTRINGS__RABBITMQ
+              value: host=rabbitmq:5672;username=rabbit;password=cg@i7!dci99087fvtt
+            - name: CONNECTIONSTRINGS__REDIS
+              value: redis:6379
+            - name: KEYCLOAK__ADDRESS
+              value: http://auth/auth/realms/master
+          image: docker.nntc.pro/capital-resources:dev
+          name: capital-resources
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 1
+              memory: 512M
+      imagePullSecrets:
+        - name: regcred
+status: {}
