@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJkb2NrZXIubm50Yy5wcm8iOnsidXNlcm5hbWUiOiJhcG9sb21vc2hub3YiLCJwYXNzd29yZCI6Ikx1bWlhNzEwISIsImF1dGgiOiJZWEJ2Ykc5dGIzTm9ibTkyT2t4MWJXbGhOekV3SVE9PSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: "2021-11-05T15:29:36Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:.dockerconfigjson: {}
+      f:type: {}
+    manager: kubectl.exe
+    operation: Update
+    time: "2021-11-05T15:29:36Z"
+  name: regcred
+  namespace: default
+  resourceVersion: "51007"
+  uid: 6a42443d-7638-4911-a970-c2e453e0ed7f
+type: kubernetes.io/dockerconfigjson
