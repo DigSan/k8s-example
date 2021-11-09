@@ -18,6 +18,6 @@ spec:
         - |
           RESULT=`curl --data "username=admin&password=admin&grant_type=password&client_id=admin-cli" http://auth:8080/auth/realms/master/protocol/openid-connect/token`
           TOKEN=`echo $RESULT | sed 's/.*access_token":"//g' | sed 's/".*//g'`
-          curl -X POST -d '{ "clientId": "infrastructure" }' -H "Content-Type:application/json" -H "Authorization: bearer ${TOKEN}" http://auth:8080/auth/realms/master/clients-registrations/default
+          curl -X POST -d '{ "clientId": "infrastructure", "publicClient": true }' -H "Content-Type:application/json" -H "Authorization: bearer ${TOKEN}" http://auth:8080/auth/realms/master/clients-registrations/default
   
       restartPolicy: Never
