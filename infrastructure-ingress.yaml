@@ -1,19 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-  name: capital-resources-ingress
+  name: infrastructure
 spec:
   rules:
     - host: apolomoshnov.net
       http:
         paths:
-          - path: /capital-resources(/|$)(.*)
+          - path: /infra(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: capital-resources
+                name: infrastructure
                 port:
                   number: 80
   ingressClassName: nginx

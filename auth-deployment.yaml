@@ -31,6 +31,9 @@ spec:
           volumeMounts:
             - mountPath: /opt/jboss/keycloak/standalone/data/
               name: auth-claim0
+          resources:
+            limits:
+              memory: 1024M
       volumes:
         - name: auth-claim0
           persistentVolumeClaim:

@@ -5,8 +5,7 @@ metadata:
     service: infrastructure
   name: infrastructure
 spec:
-  maximum-replicas: 2
-  minimum-replicas: 1
+  replicas: 1
   selector:
     matchLabels:
       service: infrastructure
@@ -21,16 +20,14 @@ spec:
             - name: WEB_AUTH_URL
               value: /auth
             - name: WEB_CLIENT_ID
-              value: infra-frontend
+              value: infrastructure
             - name: WEB_REALM
               value: master
-          image: infrastructure
+          image: docker.nntc.pro/infrastructure:master
           name: infrastructure
           ports:
             - containerPort: 80
           resources:
             limits:
-              cpu: "30%"
               memory: 256M
-      restartPolicy: Always
 status: {}
