@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: {{ .Values.serviceName }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: {{ .Values.serviceName }}
+    spec:
+      containers:
+        - env:
+            - name: WEB_AUTH_URL
+              value: /auth
+            - name: WEB_CLIENT_ID
+              value: {{ .Values.serviceName }}
+            - name: WEB_REALM
+              value: master
+          image: {{ .Values.imageName }}
+          name: {{ .Values.serviceName }}
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 256M
+status: {}
