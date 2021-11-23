@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: auth-claim0
+    io.kompose.service: {{ .Values.serviceName }}-claim0
   name: {{ .Values.serviceName }}-claim0
 spec:
   accessModes:
