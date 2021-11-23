@@ -1,0 +1,4 @@
+serviceName: auth
+imageName: jboss/keycloak:latest
+host: apolomoshnov.net
+password: admin
