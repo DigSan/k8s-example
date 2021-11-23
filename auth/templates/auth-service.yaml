@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service: auth
-  name: auth
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
 spec:
   ports:
     - name: "8080"
       port: 8080
       targetPort: 8080
   selector:
-    service: auth
+    service: {{ .Values.serviceName }}
 status:
   loadBalancer: {}

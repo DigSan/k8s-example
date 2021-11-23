@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     io.kompose.service: auth-claim0
-  name: auth-claim0
+  name: {{ .Values.serviceName }}-claim0
 spec:
   accessModes:
     - ReadWriteOnce

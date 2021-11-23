@@ -2,40 +2,40 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: auth
-  name: auth
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: auth
+      service: {{ .Values.serviceName }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        service: auth
+        service: {{ .Values.serviceName }}
     spec:
       containers:
         - env:
             - name: KEYCLOAK_PASSWORD
-              value: admin
+              value: {{ .Values.password }}
             - name: KEYCLOAK_USER
               value: admin
             - name: PROXY_ADDRESS_FORWARDING
               value: "true"
-          image: jboss/keycloak:latest
-          name: auth
+          image: {{ .Values.imageName }}
+          name: {{ .Values.serviceName }}
           ports:
             - containerPort: 8080
           volumeMounts:
             - mountPath: /opt/jboss/keycloak/standalone/data/
-              name: auth-claim0
+              name: {{ .Values.serviceName }}-claim0
           resources:
             limits:
               memory: 1024M
       volumes:
-        - name: auth-claim0
+        - name: {{ .Values.serviceName }}-claim0
           persistentVolumeClaim:
-            claimName: auth-claim0
+            claimName: {{ .Values.serviceName }}-claim0
 status: {}

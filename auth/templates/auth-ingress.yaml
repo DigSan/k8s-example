@@ -4,14 +4,14 @@ metadata:
   name: auth-ingress
 spec:
   rules:
-    - host: apolomoshnov.net
+    - host: {{ .Values.host }}
       http:
         paths:
           - path: /auth
             pathType: Prefix
             backend:
               service:
-                name: auth
+                name: {{ .Values.serviceName }}
                 port:
                   number: 8080
   ingressClassName: nginx
