@@ -7,7 +7,7 @@ spec:
     - host: {{ .Values.host }}
       http:
         paths:
-          - path: /{{ .Values.serviceName }}(/|$)(.*)
+          - path: /{{ .Values.publicPath }}(/|$)(.*)
             pathType: Prefix
             backend:
               service:
