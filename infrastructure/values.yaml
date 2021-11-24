@@ -1,4 +1,4 @@
-serviceName: infrastructure2
+serviceName: infrastructure
 imageName: docker.nntc.pro/infrastructure:master
-publicPath: infra2
+publicPath: infra
 host: apolomoshnov.net
