@@ -30,3 +30,7 @@ spec:
             limits:
               cpu: "1"
               memory: 1024M
+      volumes:
+        - name: {{ .Values.serviceName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.serviceName }}

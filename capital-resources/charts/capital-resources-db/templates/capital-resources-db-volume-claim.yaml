@@ -2,12 +2,13 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    app: capital-resources-db
-  name: capital-resources-db
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 500Mi
+      storage: 100Mi
 status: {}
