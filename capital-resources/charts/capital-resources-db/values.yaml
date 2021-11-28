@@ -1,4 +1,4 @@
-serviceName: auth
+serviceName: capital-resources-db
 imageName: jboss/keycloak:latest
 host: apolomoshnov.net
 password: admin
