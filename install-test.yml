@@ -1,0 +1,9 @@
+- hosts: master
+  become: yes
+  tasks:
+    - name: install nntc regestry
+      community.kubernetes.helm:
+        name: test
+        chart_ref: nntc-regestry.yaml
+        release_namespace: default
+        create_namespace: true
