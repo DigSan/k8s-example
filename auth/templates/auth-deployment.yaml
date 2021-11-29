@@ -32,8 +32,12 @@ spec:
             - mountPath: /opt/jboss/keycloak/standalone/data/
               name: {{ .Values.serviceName }}-claim0
           resources:
+            requests:
+              memory: "512Mi"
+              cpu: "300m"
             limits:
-              memory: 1024M
+              cpu: "2"
+              memory: 2024M
       volumes:
         - name: {{ .Values.serviceName }}-claim0
           persistentVolumeClaim:

@@ -27,9 +27,12 @@ spec:
           ports:
             - containerPort: 5432
           resources:
+            requests:
+              memory: "1024M"
+              cpu: "200m"
             limits:
-              cpu: "1"
-              memory: 1024M
+              cpu: "2"
+              memory: 2024M
       volumes:
         - name: {{ .Values.serviceName }}
           persistentVolumeClaim:
