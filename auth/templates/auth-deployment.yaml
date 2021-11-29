@@ -39,7 +39,7 @@ spec:
               cpu: "2"
               memory: 2024M
       volumes:
-        - name: {{ .Values.serviceName }}-claim0
+        - name: {{ .Values.serviceName }}
           persistentVolumeClaim:
-            claimName: {{ .Values.serviceName }}-claim0
+            claimName: {{ .Values.serviceName }}
 status: {}
