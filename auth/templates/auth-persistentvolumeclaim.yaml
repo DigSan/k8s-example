@@ -5,6 +5,7 @@ metadata:
     io.kompose.service: {{ .Values.serviceName }}
   name: {{ .Values.serviceName }}
 spec:
+  storageClassName: "slow"
   accessModes:
     - ReadWriteOnce
   resources:
