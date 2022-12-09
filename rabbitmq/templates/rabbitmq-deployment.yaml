@@ -21,7 +21,7 @@ spec:
               value: cg@i7!dci99087fvtt
             - name: RABBITMQ_DEFAULT_USER
               value: rabbit
-          image: rabbitmq:3.8-management
+          image: {{ .Values.imageName }}
           name: rabbitmq
           ports:
             - containerPort: 5672

@@ -28,9 +28,6 @@ spec:
           name: {{ .Values.serviceName }}
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - mountPath: /opt/jboss/keycloak/standalone/data/
-              name: {{ .Values.serviceName }}
           resources:
             requests:
               memory: "512Mi"

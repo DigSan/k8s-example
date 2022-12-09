@@ -1,4 +1,4 @@
 serviceName: auth
-imageName: jboss/keycloak:latest
+imageName: rabbitmq:3.9.26-management
 host: apolomoshnov.net
 password: admin
