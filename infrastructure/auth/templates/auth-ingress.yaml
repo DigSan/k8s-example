@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.serviceName }}-ingress
+  name: auth-ingress
 spec:
   rules:
     - host: {{ .Values.host }}
       http:
         paths:
-          - path: /
+          - path: /auth
             pathType: Prefix
             backend:
               service:
                 name: {{ .Values.serviceName }}
                 port:
-                  number: 80
+                  number: 8080
   tls: 
     - 
       hosts: 

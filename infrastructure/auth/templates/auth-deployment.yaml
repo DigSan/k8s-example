@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: {{ .Values.serviceName }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: {{ .Values.serviceName }}
+    spec:
+      containers:
+        - env:
+            - name: KEYCLOAK_PASSWORD
+              value: {{ .Values.password }}
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: PROXY_ADDRESS_FORWARDING
+              value: "true"
+          image: {{ .Values.imageName }}
+          name: {{ .Values.serviceName }}
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              cpu: "2"
+              memory: 2024M
+      volumes:
+        - name: {{ .Values.serviceName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.serviceName }}
+status: {}

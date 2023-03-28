@@ -28,7 +28,7 @@ spec:
               memory: 256M
           volumeMounts:
             - name: navigation-page-config
-              mountPath: "/usr/share/nginx/html/navigation-page/"
+              mountPath: "/usr/share/nginx/html/"
       volumes:
       - name: navigation-page-config
         configMap:
