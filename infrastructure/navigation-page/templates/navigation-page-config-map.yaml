@@ -1,0 +1,7 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: navigation-page-config-map
+data:
+  index.html: |-
+{{ .Files.Get "index.html" | indent 4}}

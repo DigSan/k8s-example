@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: {{ .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        service: {{ .Values.serviceName }}
+    spec:
+      containers:
+        - name: {{ .Values.serviceName }}
+          env:
+            - name: GF_SERVER_ROOT_URL
+              value: https://apolomoshnov.net/graphana/
+            - name: GF_SERVER_SERVE_FROM_SUB_PATH
+              value: "true"
+          image: grafana/grafana:main
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "512M"
+              cpu: "200m"
+            limits:
+              cpu: "2"
+              memory: 2024M

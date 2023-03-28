@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: {{ .Values.serviceName }}
+  name: {{ .Values.serviceName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: {{ .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        service: {{ .Values.serviceName }}
+    spec:
+      containers:
+        - name: {{ .Values.serviceName }}
+          image: {{ .Values.imageName }}
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128M"
+              cpu: "100m"
+            limits:
+              cpu: "200m"
+              memory: 256M
+          volumeMounts:
+            - name: navigation-page-config
+              mountPath: "/usr/share/nginx/html/navigation-page/"
+      volumes:
+      - name: navigation-page-config
+        configMap:
+          name: navigation-page-config-map

@@ -1,0 +1,3 @@
+serviceName: navigation-page
+imageName: nginx:latest
+host: apolomoshnov.net
