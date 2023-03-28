@@ -1,4 +1,4 @@
-serviceName: graphana
+serviceName: grafana
 imageName: jboss/keycloak:latest
 host: apolomoshnovdevops.net
 password: admin
