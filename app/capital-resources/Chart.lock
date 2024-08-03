@@ -1,0 +1,6 @@
+dependencies:
+- name: capital-resources-db
+  repository: ""
+  version: ~0.2.0
+digest: sha256:dceac2a7dddf0b587bb07852fe18acaa78dd38f1efbc6d57710f2e1d8f26bf4f
+generated: "2023-11-17T14:48:02.9488769+03:00"

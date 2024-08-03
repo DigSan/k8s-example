@@ -1,4 +1,4 @@
-serviceName: auth
+serviceName: dev-auth
 imageName: jboss/keycloak:latest
 host: apolomoshnovdevops.net
 password: admin

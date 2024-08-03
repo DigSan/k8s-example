@@ -5,7 +5,7 @@ metadata:
     service: {{ .Values.serviceName }}
   name: {{ .Values.serviceName }}
 spec:
-  storageClassName: "local-storage"
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:

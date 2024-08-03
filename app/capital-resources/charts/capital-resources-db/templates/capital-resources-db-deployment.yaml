@@ -19,7 +19,10 @@ spec:
             - name: POSTGRES_DB
               value: capital-resources
             - name: POSTGRES_PASSWORD
-              value: 6jcl2#gbnkj14367dwe&5
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.serviceName }}
+                  key: password
             - name: POSTGRES_USER
               value: admin
           image: postgis/postgis:12-3.0
